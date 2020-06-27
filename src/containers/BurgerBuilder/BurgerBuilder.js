@@ -4,6 +4,7 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+import Backdrop from '../../components/UI/Modal/Backdrop/Backdrop'
 
 const INGREDIENT_PRICES = {
     salad:0.3,
@@ -72,11 +73,16 @@ class BurgerBuilder extends React.Component {
                 purchasable:sum > 0
             })
     }
+    purchaseCancelHandler = ()=>{
+        this.setState({
+            purchasing:false
+        })
+    }
     purchaseHandler =() =>{
         this.setState({
             purchasing:true
         })
-        console.log(this.state.purchasing)
+        
     }
     render(){
         const disableInfo = {
@@ -88,7 +94,8 @@ class BurgerBuilder extends React.Component {
         
         return (
             <Aux>
-                <Modal show={this.state.purchasing}>
+               
+                <Modal show={this.state.purchasing} backdropCancel ={this.purchaseCancelHandler}>
                     <OrderSummary  ingredients= {this.state.ingredients}/>    
                  </Modal>
                <Burger  ingredient={this.state.ingredients}/>
