@@ -6,7 +6,6 @@ import Toolbar from './components/Navigation/Toolbar/Toolbar'
 function App() {
   return (
     <div>
-      <Toolbar/>
       <Layout >
         <BurgerBuilder />
       </Layout>
