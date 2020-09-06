@@ -6,14 +6,16 @@ import Toolbar from '../Navigation/Toolbar/Toolbar'
 
 class Layout extends Component {
     state ={
-        showSideDrawer:true
+        showSideDrawer:false
     }
     closeSideDrawerHandler = () =>{ 
 
         this.setState({showSideDrawer:false}) 
     }
     toggleSideDrawerHandler = () =>{  
-        this.setState((prevState)=>{return{showSideDrawer:!prevState.SideDrawer}
+        
+        this.setState((prevState)=>{
+            return{showSideDrawer:!prevState.showSideDrawer}
         }) 
     }
    
