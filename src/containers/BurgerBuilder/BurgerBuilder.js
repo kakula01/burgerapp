@@ -5,6 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Backdrop from '../../components/UI/Modal/Backdrop/Backdrop'
+import axios from '../../../src/axios-orders'
 
 const INGREDIENT_PRICES = {
     salad:0.3,
@@ -85,7 +86,24 @@ class BurgerBuilder extends React.Component {
         
     }
     purchaseContinueHandler =() =>{
-        alert("continued?");
+        const postData = {
+            ingredients: this.state.ingredients,
+            customer:{
+                name:'keerthi',
+                address:{
+                    stret:'abcd',
+                    city:'sdsd'
+                }
+            },
+            price:this.state.totalPrice
+        }
+       axios.post('/orders.json', postData)
+            .then(response=>{
+                console.log(response)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
     }
     render(){
         const disableInfo = {
